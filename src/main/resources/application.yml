@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/test-db
+
+# mongo-adepts 配置
+mongo-adepts:
+  # debug模式
+  debug: true
