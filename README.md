@@ -1,3 +1,4 @@
 # mongo-adepts-springboot-example
-mongo-adepts-start-example
-使用mongo-adepts的springboot例子
+## [MongoAdepts主页](https://github.com/coeuy/mongo-adepts)
+
+这是一个使用mongo-adepts的springboot例子项目
