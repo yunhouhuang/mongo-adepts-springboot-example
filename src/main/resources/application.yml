@@ -1,6 +1,9 @@
 spring:
   data:
     mongodb:
+      # uri格式: mongodb://{用户名}:{密码}@{数据库地址}:{数据库端口}/{数据库名}
+      # 例如 uri: mongodb://root:123456@127.0.0.1:27017/test-db
+      # 无密码模式
       uri: mongodb://localhost:27017/test-db
 
 # mongo-adepts 配置
