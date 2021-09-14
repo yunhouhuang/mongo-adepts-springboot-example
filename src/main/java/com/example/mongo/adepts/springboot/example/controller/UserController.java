@@ -1,6 +1,7 @@
 package com.example.mongo.adepts.springboot.example.controller;
 
-import com.coeuy.osp.mongo.adepts.model.query.QueryAdepts;
+import com.coeuy.osp.mongo.adepts.model.query.QueryWrapper;
+import com.coeuy.osp.mongo.adepts.model.query.QueryWrapper;
 import com.coeuy.osp.mongo.adepts.service.MongoAdepts;
 import com.example.mongo.adepts.springboot.example.model.document.User;
 import com.example.mongo.adepts.springboot.example.model.document.UserAddress;
@@ -45,7 +46,7 @@ public class UserController {
 
     @GetMapping("keyword")
     public void likeKeyword(@RequestParam String username){
-        QueryAdepts like = new QueryAdepts().like("username", username);
+        QueryWrapper like = new QueryWrapper().like("username", username);
         List<User> user = mongoAdepts.list(like, User.class);
         log.info("like {}",user);
     }
@@ -60,9 +61,9 @@ public class UserController {
     public void update(){
         String username = "Yarnk";
         String password = "sadasdasfsaddf";
-        QueryAdepts queryAdepts = new QueryAdepts().eq("username","Yarnk");
-        queryAdepts.update("username",username).update("password",password);
-        boolean up =  mongoAdepts.update(queryAdepts,User.class);
+        QueryWrapper queryWrapper = new QueryWrapper().eq("username","Yarnk");
+        queryWrapper.update("username",username).update("password",password);
+        boolean up =  mongoAdepts.update(queryWrapper,User.class);
         log.info("update {}",up);
     }
 
@@ -71,7 +72,7 @@ public class UserController {
         // 真实用户id根据实际情况获取
         Long userId = 1L;
         // 这里会忘子文档中新增
-        QueryAdepts eq = new QueryAdepts().push("address", address).eq("userId", userId);
+        QueryWrapper eq = new QueryWrapper().push("address", address).eq("userId", userId);
         mongoAdepts.update(eq,User.class);
     }
 
@@ -82,7 +83,7 @@ public class UserController {
         UserAddress userAddress = new UserAddress();
         // 这里会删除 address.mobile = "123" 的子文档
         userAddress.setMobile("123");
-        QueryAdepts eq = new QueryAdepts().pull("address", userAddress).eq("userId", userId);
+        QueryWrapper eq = new QueryWrapper().pull("address", userAddress).eq("userId", userId);
         mongoAdepts.update(eq,User.class);
     }
 

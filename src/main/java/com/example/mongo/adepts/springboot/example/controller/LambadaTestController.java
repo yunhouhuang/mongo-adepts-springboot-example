@@ -2,7 +2,7 @@ package com.example.mongo.adepts.springboot.example.controller;
 
 import com.coeuy.osp.mongo.adepts.model.query.Adepts;
 import com.coeuy.osp.mongo.adepts.model.query.LambdaQueryAdepts;
-import com.coeuy.osp.mongo.adepts.model.query.QueryAdepts;
+import com.coeuy.osp.mongo.adepts.model.query.QueryWrapper;
 import com.coeuy.osp.mongo.adepts.service.MongoAdepts;
 import com.example.mongo.adepts.springboot.example.model.document.User;
 import lombok.RequiredArgsConstructor;

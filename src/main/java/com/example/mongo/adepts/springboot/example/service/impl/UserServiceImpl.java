@@ -1,6 +1,6 @@
 package com.example.mongo.adepts.springboot.example.service.impl;
 
-import com.coeuy.osp.mongo.adepts.model.query.QueryAdepts;
+import com.coeuy.osp.mongo.adepts.model.query.QueryWrapper;
 import com.coeuy.osp.mongo.adepts.service.MongoService;
 import com.example.mongo.adepts.springboot.example.model.document.User;
 import com.example.mongo.adepts.springboot.example.service.UserService;
@@ -22,17 +22,17 @@ public class UserServiceImpl extends MongoService<User> implements UserService {
 
     @Override
     public User getById(Long userId) {
-        return getOne(new QueryAdepts().eq("userId", userId));
+        return getOne(new QueryWrapper().eq("userId", userId));
     }
 
     @Override
     public User getByUsername(String username) {
-        return getOne(new QueryAdepts().eq("username", username));
+        return getOne(new QueryWrapper().eq("username", username));
     }
 
     @Override
     public List<User> getInUserIdList(List<Long> userIdList){
-        return list(new QueryAdepts().in("userId",userIdList));
+        return list(new QueryWrapper().in("userId",userIdList));
     }
 
 
@@ -52,14 +52,14 @@ public class UserServiceImpl extends MongoService<User> implements UserService {
 
     @Override
     public Boolean updateUser(String username, String password){
-        QueryAdepts queryAdepts = new QueryAdepts().eq("username",username);
-        queryAdepts.update("username",username).update("password",password);
-        return update(queryAdepts);
+        QueryWrapper queryWrapper = new QueryWrapper().eq("username",username);
+        queryWrapper.update("username",username).update("password",password);
+        return update(queryWrapper);
     }
 
     @Override
     public Boolean deleteUser(Long userId){
-        QueryAdepts queryAdepts = new QueryAdepts().eq("userId",userId);
-        return delete(queryAdepts);
+        QueryWrapper queryWrapper = new QueryWrapper().eq("userId",userId);
+        return delete(queryWrapper);
     }
 }
